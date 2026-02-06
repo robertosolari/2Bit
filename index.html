@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2Bit — Binary Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-wrapper">
+    <!-- Header -->
+    <div class="game-header">
+        <div class="logo">
+            <div class="logo-icon">01</div>
+            <h1 id="title">2Bit</h1>
+        </div>
+        <div class="header-controls">
+            <select id="mode" class="select-styled">
+                <option value="mixed" id="opt-mixed">Mixed</option>
+                <option value="binToDec" id="opt-bin2dec">BIN → DEC</option>
+                <option value="decToBin" id="opt-dec2bin">DEC → BIN</option>
+            </select>
+            <select id="language" class="select-styled">
+                <option value="en">EN</option>
+                <option value="it">IT</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Main Card -->
+    <div class="game-card">
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-label" id="label-level">Level</div>
+                <div class="stat-value level" id="level-display">1</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label" id="label-score">Score</div>
+                <div class="stat-value score" id="score-display">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label" id="label-time">Time</div>
+                <div class="stat-value timer" id="timer">10</div>
+            </div>
+        </div>
+
+        <!-- Question -->
+        <div class="question-section">
+            <p class="question-label" id="instruction">Convert this number:</p>
+            <div class="question-display" id="question">1010</div>
+            <span class="question-type-badge badge-binary" id="type-badge">BINARY</span>
+        </div>
+
+        <!-- Answer -->
+        <div class="answer-section">
+            <input type="text" id="answer" class="answer-input" placeholder="Your answer..." autocomplete="off" />
+            <button id="submit-btn" class="submit-btn" onclick="submitAnswer()">OK</button>
+        </div>
+
+        <!-- Feedback -->
+        <div class="feedback-section">
+            <p id="feedback" class="feedback-msg"></p>
+        </div>
+        <div id="correct-reveal"></div>
+
+        <!-- Streak dots -->
+        <div class="streak-section" id="streak">
+            <div class="streak-dot"></div>
+            <div class="streak-dot"></div>
+            <div class="streak-dot"></div>
+            <div class="streak-dot"></div>
+            <div class="streak-dot"></div>
+        </div>
+
+        <!-- Timer bar -->
+        <div class="timer-bar-container">
+            <div class="timer-bar" id="timer-bar"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

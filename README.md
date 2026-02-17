@@ -1,5 +1,7 @@
 # 2Bit — Binary Conversion Game
 
+🎮 **[Play now → binplay.netlify.app](https://binplay.netlify.app/)**
+
 A web-based game to practice converting numbers between binary and decimal.
 
 ## How to Play

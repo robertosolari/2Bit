@@ -25,6 +25,7 @@
                 <option value="en">EN</option>
                 <option value="it">IT</option>
             </select>
+            <button id="learn-btn" class="learn-btn" onclick="openLearnModal()">?</button>
         </div>
     </div>
 
@@ -78,6 +79,210 @@
         <div class="timer-bar-container">
             <div class="timer-bar" id="timer-bar"></div>
         </div>
+    </div>
+</div>
+
+<!-- Learn Modal -->
+<div id="learn-modal" class="learn-modal-overlay" onclick="closeLearnModal(event)">
+    <div class="learn-modal">
+        <button class="learn-close" onclick="closeLearnModal()">&times;</button>
+        <h2 class="learn-title" id="learn-title">How Binary Works</h2>
+        <p class="learn-subtitle" id="learn-subtitle">It's simpler than you think</p>
+
+        <!-- Tabs -->
+        <div class="learn-tabs">
+            <button class="learn-tab active" id="tab-bin2dec" onclick="switchLearnTab('bin2dec')">
+                <span class="tab-label">BIN &rarr; DEC</span>
+            </button>
+            <button class="learn-tab" id="tab-dec2bin" onclick="switchLearnTab('dec2bin')">
+                <span class="tab-label">DEC &rarr; BIN</span>
+            </button>
+        </div>
+
+        <!-- BIN → DEC Content -->
+        <div class="learn-content" id="learn-bin2dec">
+            <div class="learn-step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <p class="step-text" id="step-b2d-1">Each binary digit has a <strong>position</strong>, starting from the right at 0.</p>
+                </div>
+            </div>
+
+            <div class="learn-example-box">
+                <div class="example-label" id="example-label-1">Example: 1011</div>
+                <div class="bit-breakdown">
+                    <div class="bit-col">
+                        <span class="bit-digit accent">1</span>
+                        <span class="bit-arrow">&darr;</span>
+                        <span class="bit-pos">pos 3</span>
+                    </div>
+                    <div class="bit-col">
+                        <span class="bit-digit dim">0</span>
+                        <span class="bit-arrow">&darr;</span>
+                        <span class="bit-pos">pos 2</span>
+                    </div>
+                    <div class="bit-col">
+                        <span class="bit-digit accent">1</span>
+                        <span class="bit-arrow">&darr;</span>
+                        <span class="bit-pos">pos 1</span>
+                    </div>
+                    <div class="bit-col">
+                        <span class="bit-digit accent">1</span>
+                        <span class="bit-arrow">&darr;</span>
+                        <span class="bit-pos">pos 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learn-step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <p class="step-text" id="step-b2d-2">Each position is worth a <strong>power of 2</strong>. Think of it like slots that double each time.</p>
+                </div>
+            </div>
+
+            <div class="learn-example-box">
+                <div class="power-row">
+                    <div class="power-col">
+                        <span class="power-val">2&sup3;</span>
+                        <span class="power-eq">=&nbsp;8</span>
+                    </div>
+                    <div class="power-col">
+                        <span class="power-val">2&sup2;</span>
+                        <span class="power-eq">=&nbsp;4</span>
+                    </div>
+                    <div class="power-col">
+                        <span class="power-val">2&sup1;</span>
+                        <span class="power-eq">=&nbsp;2</span>
+                    </div>
+                    <div class="power-col">
+                        <span class="power-val">2&deg;</span>
+                        <span class="power-eq">=&nbsp;1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learn-step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <p class="step-text" id="step-b2d-3">Multiply each digit by its position value, then <strong>add them up</strong>.</p>
+                </div>
+            </div>
+
+            <div class="learn-example-box final-calc">
+                <div class="calc-row">
+                    <div class="calc-item">
+                        <span class="calc-bit accent">1</span>
+                        <span class="calc-times">&times;</span>
+                        <span class="calc-power">8</span>
+                        <span class="calc-result">=&nbsp;8</span>
+                    </div>
+                    <span class="calc-plus">+</span>
+                    <div class="calc-item">
+                        <span class="calc-bit dim">0</span>
+                        <span class="calc-times">&times;</span>
+                        <span class="calc-power">4</span>
+                        <span class="calc-result">=&nbsp;0</span>
+                    </div>
+                    <span class="calc-plus">+</span>
+                    <div class="calc-item">
+                        <span class="calc-bit accent">1</span>
+                        <span class="calc-times">&times;</span>
+                        <span class="calc-power">2</span>
+                        <span class="calc-result">=&nbsp;2</span>
+                    </div>
+                    <span class="calc-plus">+</span>
+                    <div class="calc-item">
+                        <span class="calc-bit accent">1</span>
+                        <span class="calc-times">&times;</span>
+                        <span class="calc-power">1</span>
+                        <span class="calc-result">=&nbsp;1</span>
+                    </div>
+                </div>
+                <div class="calc-total">
+                    <span id="calc-total-label-1">Total</span>: 8 + 0 + 2 + 1 = <strong class="accent">11</strong>
+                </div>
+            </div>
+
+            <div class="learn-tip">
+                <span class="tip-icon">&#9889;</span>
+                <p id="tip-b2d"><strong>Pro tip:</strong> Memorize the powers of 2 (1, 2, 4, 8, 16, 32, 64, 128...) — they're your best friends here.</p>
+            </div>
+        </div>
+
+        <!-- DEC → BIN Content -->
+        <div class="learn-content hidden" id="learn-dec2bin">
+            <div class="learn-step">
+                <div class="step-number">1</div>
+                <div class="step-body">
+                    <p class="step-text" id="step-d2b-1">Divide the number by 2. Write down the <strong>remainder</strong> (0 or 1).</p>
+                </div>
+            </div>
+
+            <div class="learn-step">
+                <div class="step-number">2</div>
+                <div class="step-body">
+                    <p class="step-text" id="step-d2b-2">Keep dividing the result by 2, writing down each remainder.</p>
+                </div>
+            </div>
+
+            <div class="learn-step">
+                <div class="step-number">3</div>
+                <div class="step-body">
+                    <p class="step-text" id="step-d2b-3">When you reach 0, <strong>read the remainders bottom-to-top</strong>. That's your binary number!</p>
+                </div>
+            </div>
+
+            <div class="learn-example-box">
+                <div class="example-label" id="example-label-2">Example: 13 &rarr; binary</div>
+                <div class="division-table">
+                    <div class="div-row">
+                        <span class="div-num">13</span>
+                        <span class="div-op">&divide; 2 =</span>
+                        <span class="div-result">6</span>
+                        <span class="div-remainder-label" id="remainder-label">rem</span>
+                        <span class="div-remainder accent">1</span>
+                        <span class="div-arrow read-arrow">&uarr;</span>
+                    </div>
+                    <div class="div-row">
+                        <span class="div-num">6</span>
+                        <span class="div-op">&divide; 2 =</span>
+                        <span class="div-result">3</span>
+                        <span class="div-remainder-label">rem</span>
+                        <span class="div-remainder dim">0</span>
+                        <span class="div-arrow">&uarr;</span>
+                    </div>
+                    <div class="div-row">
+                        <span class="div-num">3</span>
+                        <span class="div-op">&divide; 2 =</span>
+                        <span class="div-result">1</span>
+                        <span class="div-remainder-label">rem</span>
+                        <span class="div-remainder accent">1</span>
+                        <span class="div-arrow">&uarr;</span>
+                    </div>
+                    <div class="div-row">
+                        <span class="div-num">1</span>
+                        <span class="div-op">&divide; 2 =</span>
+                        <span class="div-result">0</span>
+                        <span class="div-remainder-label">rem</span>
+                        <span class="div-remainder accent">1</span>
+                        <span class="div-arrow">&uarr;</span>
+                    </div>
+                </div>
+                <div class="read-direction">
+                    <span id="read-label">Read upward</span> &rarr; <strong class="accent">1101</strong>
+                </div>
+            </div>
+
+            <div class="learn-tip">
+                <span class="tip-icon">&#9889;</span>
+                <p id="tip-d2b"><strong>Pro tip:</strong> There's a shortcut! Ask yourself: does 8 fit in 13? Yes (1). Remainder 5. Does 4 fit? Yes (1). Remainder 1. Does 2 fit? No (0). Does 1 fit? Yes (1). Result: 1101.</p>
+            </div>
+        </div>
+
+        <button class="learn-play-btn" onclick="closeLearnModal()">
+            <span id="learn-play-text">Got it, let's play!</span>
+        </button>
     </div>
 </div>
 

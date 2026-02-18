@@ -13,7 +13,24 @@ const texts = {
         mixed: "Mixed",
         bin2dec: "BIN → DEC",
         dec2bin: "DEC → BIN",
-        correctWas: "Answer:"
+        correctWas: "Answer:",
+        // Learn modal
+        learnTitle: "How Binary Works",
+        learnSubtitle: "It's simpler than you think",
+        stepB2D1: 'Each binary digit has a <strong>position</strong>, starting from the right at 0.',
+        stepB2D2: 'Each position is worth a <strong>power of 2</strong>. Think of it like slots that double each time.',
+        stepB2D3: 'Multiply each digit by its position value, then <strong>add them up</strong>.',
+        tipB2D: '<strong>Pro tip:</strong> Memorize the powers of 2 (1, 2, 4, 8, 16, 32, 64, 128...) — they\'re your best friends here.',
+        stepD2B1: 'Divide the number by 2. Write down the <strong>remainder</strong> (0 or 1).',
+        stepD2B2: 'Keep dividing the result by 2, writing down each remainder.',
+        stepD2B3: 'When you reach 0, <strong>read the remainders bottom-to-top</strong>. That\'s your binary number!',
+        tipD2B: '<strong>Pro tip:</strong> There\'s a shortcut! Ask yourself: does 8 fit in 13? Yes (1). Remainder 5. Does 4 fit? Yes (1). Remainder 1. Does 2 fit? No (0). Does 1 fit? Yes (1). Result: 1101.',
+        exampleLabel1: 'Example: 1011',
+        exampleLabel2: 'Example: 13 → binary',
+        calcTotalLabel: 'Total',
+        remainderLabel: 'rem',
+        readLabel: 'Read upward',
+        learnPlayText: "Got it, let's play!"
     },
     it: {
         title: "2Bit",
@@ -28,7 +45,24 @@ const texts = {
         mixed: "Misto",
         bin2dec: "BIN → DEC",
         dec2bin: "DEC → BIN",
-        correctWas: "Risposta:"
+        correctWas: "Risposta:",
+        // Learn modal
+        learnTitle: "Come funziona il binario",
+        learnSubtitle: "È più semplice di quanto pensi",
+        stepB2D1: 'Ogni cifra binaria ha una <strong>posizione</strong>, partendo da destra con 0.',
+        stepB2D2: 'Ogni posizione vale una <strong>potenza di 2</strong>. Immaginalo come slot che raddoppiano ogni volta.',
+        stepB2D3: 'Moltiplica ogni cifra per il valore della sua posizione, poi <strong>somma tutto</strong>.',
+        tipB2D: '<strong>Pro tip:</strong> Memorizza le potenze di 2 (1, 2, 4, 8, 16, 32, 64, 128...) — sono le tue migliori amiche qui.',
+        stepD2B1: 'Dividi il numero per 2. Scrivi il <strong>resto</strong> (0 o 1).',
+        stepD2B2: 'Continua a dividere il risultato per 2, scrivendo ogni resto.',
+        stepD2B3: 'Quando arrivi a 0, <strong>leggi i resti dal basso verso l\'alto</strong>. Quello è il tuo numero binario!',
+        tipD2B: '<strong>Pro tip:</strong> C\'è una scorciatoia! Chiediti: 8 sta nel 13? Sì (1). Resto 5. 4 sta? Sì (1). Resto 1. 2 sta? No (0). 1 sta? Sì (1). Risultato: 1101.',
+        exampleLabel1: 'Esempio: 1011',
+        exampleLabel2: 'Esempio: 13 → binario',
+        calcTotalLabel: 'Totale',
+        remainderLabel: 'resto',
+        readLabel: 'Leggi verso l\'alto',
+        learnPlayText: "Capito, giochiamo!"
     }
 };
 
@@ -224,6 +258,78 @@ function submitAnswer() {
         showFeedback("wrong");
     }
 }
+
+// Learn modal
+const learnModal = document.getElementById("learn-modal");
+const learnTitleEl = document.getElementById("learn-title");
+const learnSubtitleEl = document.getElementById("learn-subtitle");
+const learnBin2Dec = document.getElementById("learn-bin2dec");
+const learnDec2Bin = document.getElementById("learn-dec2bin");
+const tabBin2Dec = document.getElementById("tab-bin2dec");
+const tabDec2Bin = document.getElementById("tab-dec2bin");
+
+function openLearnModal() {
+    clearInterval(timerInterval);
+    learnModal.classList.add("active");
+    updateLearnLanguage();
+    document.body.style.overflow = "hidden";
+}
+
+function closeLearnModal(e) {
+    if (e && e.target !== learnModal) return;
+    learnModal.classList.remove("active");
+    document.body.style.overflow = "";
+    startGame();
+}
+
+function switchLearnTab(tab) {
+    if (tab === "bin2dec") {
+        learnBin2Dec.classList.remove("hidden");
+        learnDec2Bin.classList.add("hidden");
+        tabBin2Dec.classList.add("active");
+        tabDec2Bin.classList.remove("active");
+    } else {
+        learnDec2Bin.classList.remove("hidden");
+        learnBin2Dec.classList.add("hidden");
+        tabDec2Bin.classList.add("active");
+        tabBin2Dec.classList.remove("active");
+    }
+}
+
+function updateLearnLanguage() {
+    const t = texts[language];
+    learnTitleEl.textContent = t.learnTitle;
+    learnSubtitleEl.textContent = t.learnSubtitle;
+
+    document.getElementById("step-b2d-1").innerHTML = t.stepB2D1;
+    document.getElementById("step-b2d-2").innerHTML = t.stepB2D2;
+    document.getElementById("step-b2d-3").innerHTML = t.stepB2D3;
+    document.getElementById("tip-b2d").innerHTML = t.tipB2D;
+
+    document.getElementById("step-d2b-1").innerHTML = t.stepD2B1;
+    document.getElementById("step-d2b-2").innerHTML = t.stepD2B2;
+    document.getElementById("step-d2b-3").innerHTML = t.stepD2B3;
+    document.getElementById("tip-d2b").innerHTML = t.tipD2B;
+
+    document.getElementById("example-label-1").textContent = t.exampleLabel1;
+    document.getElementById("example-label-2").textContent = t.exampleLabel2;
+    document.getElementById("calc-total-label-1").textContent = t.calcTotalLabel;
+    document.getElementById("read-label").textContent = t.readLabel;
+    document.getElementById("learn-play-text").textContent = t.learnPlayText;
+
+    document.querySelectorAll(".div-remainder-label").forEach(el => {
+        el.textContent = t.remainderLabel;
+    });
+}
+
+// Close modal on Escape
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && learnModal.classList.contains("active")) {
+        learnModal.classList.remove("active");
+        document.body.style.overflow = "";
+        startGame();
+    }
+});
 
 // Init
 setLanguage();

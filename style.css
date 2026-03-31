@@ -507,6 +507,52 @@ body::after {
     font-weight: 600;
 }
 
+/* GitHub button */
+.github-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.github-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+    background: var(--accent-dim);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Ad banners */
+.ad-banner {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ad-banner-top {
+    margin-bottom: 16px;
+}
+
+.ad-banner-bottom {
+    margin-top: 16px;
+}
+
+.ad-banner ins {
+    width: 100%;
+}
+
 /* Learn button */
 .learn-btn {
     width: 36px;

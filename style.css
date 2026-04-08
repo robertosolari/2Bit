@@ -34,9 +34,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* Animated background grid */
@@ -73,6 +73,16 @@ body::after {
     pointer-events: none;
     z-index: 0;
     white-space: pre-wrap;
+}
+
+.page-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .game-wrapper {
@@ -529,6 +539,22 @@ body::after {
     box-shadow: 0 0 12px var(--accent-glow);
 }
 
+/* Intro text above game */
+.content-intro {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.content-intro p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.content-intro strong {
+    color: var(--accent);
+}
+
 /* Ad banners */
 .ad-banner {
     background: var(--bg-card);
@@ -539,18 +565,165 @@ body::after {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    width: 100%;
+    max-width: 720px;
 }
 
-.ad-banner-top {
-    margin-bottom: 16px;
+.ad-banner-mid {
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
 
 .ad-banner-bottom {
-    margin-top: 16px;
+    margin-top: 32px;
+    margin-bottom: 24px;
 }
 
 .ad-banner ins {
     width: 100%;
+}
+
+/* Educational content sections */
+.content-section {
+    width: 100%;
+    max-width: 720px;
+}
+
+.content-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+}
+
+.content-block h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.content-block p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.content-block strong {
+    color: var(--text-primary);
+}
+
+.content-example {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 16px;
+}
+
+.content-example h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.content-example ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+
+.content-example li {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.content-example li:last-child {
+    border-bottom: none;
+}
+
+.content-example li strong {
+    color: var(--accent);
+}
+
+.content-example p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+.content-example p strong {
+    color: var(--green);
+    font-size: 16px;
+}
+
+/* Reference table */
+.reference-table-wrapper {
+    margin-top: 16px;
+    overflow-x: auto;
+}
+
+.reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+}
+
+.reference-table th {
+    background: var(--bg-secondary);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 16px;
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+}
+
+.reference-table td {
+    padding: 8px 16px;
+    text-align: center;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.reference-table td:nth-child(odd) {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.reference-table td:nth-child(even) {
+    color: var(--accent);
+}
+
+.reference-table tbody tr:hover {
+    background: rgba(0, 229, 255, 0.03);
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    max-width: 720px;
+    text-align: center;
+    padding: 24px 16px 32px;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
 }
 
 /* Learn button */
@@ -1098,5 +1271,19 @@ body::after {
     .div-row {
         font-size: 13px;
         padding: 6px 8px;
+    }
+
+    .content-block {
+        padding: 20px 18px;
+    }
+
+    .content-example {
+        padding: 16px;
+    }
+
+    .reference-table th,
+    .reference-table td {
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }

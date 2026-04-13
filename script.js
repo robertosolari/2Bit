@@ -52,7 +52,7 @@ const texts = {
         contentWhyText: 'Understanding binary is essential for anyone interested in computer science, programming, or information technology. Binary is the foundation of how processors execute instructions, how memory stores data, and how networks transmit information. Learning to convert between binary and decimal builds your number sense, strengthens logical thinking, and gives you a deeper understanding of how the digital world works beneath the surface. Whether you are a student, a developer, or simply curious, practicing binary conversions is a valuable and rewarding skill.',
         contentHowTitle: 'How 2Bit Works',
         contentHowText: '2Bit is a free, interactive binary conversion game designed to make learning fun and effective. You are presented with a number and must convert it between binary and decimal before the timer runs out. Each correct answer earns points and advances you to the next level, where the numbers get larger and more challenging. Build a streak of consecutive correct answers to prove your mastery. Choose from three game modes: <strong>Mixed</strong> (random direction), <strong>BIN \u2192 DEC</strong> (binary to decimal only), or <strong>DEC \u2192 BIN</strong> (decimal to binary only). The game is available in English and Italian.',
-        footerText: '\u00a9 2024 2Bit \u2014 A free binary conversion learning tool. Built with passion for education and open source.'
+        footerText: '\u00a9 2026 2Bit \u2014 A free binary conversion learning tool. Built with passion for education and open source.'
     },
     it: {
         title: "2Bit",
@@ -106,7 +106,7 @@ const texts = {
         contentWhyText: 'Comprendere il binario \u00e8 essenziale per chiunque sia interessato all\u2019informatica, alla programmazione o alla tecnologia dell\u2019informazione. Il binario \u00e8 alla base di come i processori eseguono le istruzioni, come la memoria archivia i dati e come le reti trasmettono le informazioni. Imparare a convertire tra binario e decimale sviluppa il tuo senso numerico, rafforza il pensiero logico e ti d\u00e0 una comprensione pi\u00f9 profonda di come funziona il mondo digitale sotto la superficie. Che tu sia uno studente, uno sviluppatore o semplicemente curioso, esercitarsi con le conversioni binarie \u00e8 un\u2019abilit\u00e0 preziosa e gratificante.',
         contentHowTitle: 'Come Funziona 2Bit',
         contentHowText: '2Bit \u00e8 un gioco gratuito e interattivo di conversione binaria progettato per rendere l\u2019apprendimento divertente ed efficace. Ti viene presentato un numero e devi convertirlo tra binario e decimale prima che il timer scada. Ogni risposta corretta ti fa guadagnare punti e ti fa avanzare al livello successivo, dove i numeri diventano pi\u00f9 grandi e impegnativi. Costruisci una serie di risposte consecutive corrette per dimostrare la tua padronanza. Scegli tra tre modalit\u00e0 di gioco: <strong>Misto</strong> (direzione casuale), <strong>BIN \u2192 DEC</strong> (solo da binario a decimale), o <strong>DEC \u2192 BIN</strong> (solo da decimale a binario). Il gioco \u00e8 disponibile in inglese e italiano.',
-        footerText: '\u00a9 2024 2Bit \u2014 Uno strumento gratuito per imparare la conversione binaria. Creato con passione per l\u2019educazione e l\u2019open source.'
+        footerText: '\u00a9 2026 2Bit \u2014 Uno strumento gratuito per imparare la conversione binaria. Creato con passione per l\u2019educazione e l\u2019open source.'
     }
 };
 
